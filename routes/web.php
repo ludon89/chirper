@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,8 @@ Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 require __DIR__ . '/auth.php';
+
+
+// Route pour afficher la liste d'utilisateurs
+// Récup de la méthode index() dans le contrôleur AuthorController
+Route::get("/authors", [AuthorController::class, "index"]);
